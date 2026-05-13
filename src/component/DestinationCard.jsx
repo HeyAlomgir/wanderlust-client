@@ -1,10 +1,11 @@
 import { Button, Card } from "@heroui/react";
 import Image from "next/image";
+import Link from "next/link";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoMdArrowRoundForward } from "react-icons/io";
 
 const DestinationCard = ({destination}) => {
-    const {destinationName,country,category,price,duration,departureDate,imageUrl,description}=destination;
+    const {_id,destinationName,country,category,price,duration,departureDate,imageUrl,description}=destination;
     return (
        <Card className="border  ">
          <div className="text-center space-y-2 ">
@@ -22,7 +23,11 @@ const DestinationCard = ({destination}) => {
                 <p>${departureDate} </p>
             </div>
             <p className="text-gray-600">{description}</p>
+            <Link href={`/destinations/${_id}`}>
+
             <Button className={"flex gap-3 w-full"}> BOOK NOW  <span><IoMdArrowRoundForward/></span> </Button>
+            
+            </Link>
         </div>
        </Card>
     );

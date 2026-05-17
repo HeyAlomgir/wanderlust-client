@@ -1,3 +1,4 @@
+import BokigCard from "@/component/BokigCard";
 import { DeleteDialog } from "@/component/DeleteDialog";
 import EditModal from "@/component/EditModal";
 import { Button, Card } from "@heroui/react";
@@ -25,25 +26,24 @@ const DesetinationsDetailPage =async ({params}) => {
             <DeleteDialog destinations={destinations} />
            </div>
 
+         <Card className="border my-5 ">
+         <div className="space-y-2">
 
-
-
-         <Card className="border  ">
-         <div className="text-center space-y-2">
             <Image src={imageUrl} alt={destinationName} height={400} width={400}  unoptimized className="mx-auto" ></Image>
+    
+            <div className=" flex-row md:flex justify-between gap-5 ">
+            <div>
+                  <p className="flex items-center gap-3 text-muted"><FaLocationDot /> {country} </p>   
+                   <h1 className="text-cyan-800">{destinationName} </h1>
+                     <p className="text-muted">{duration} </p>
+                <h1 className="font-extrabold">OVERVIEW</h1>
+                <p className="text-muted">{description}</p>
 
-            <p className="flex items-center gap-3 text-gray-600"><FaLocationDot /> {country} </p>
-
-            <div className="flex items-center justify-between text-gray-600">
-                <h1>{destinationName} </h1>
-                <h1>${price} </h1>
             </div>
-
-            <div className="flex items-center justify-between text-gray-600">
-                <p>{duration} </p>
-                <p>${departureDate} </p>
+            <div>
+                <BokigCard destinations={destinations} />
             </div>
-            <p className="text-gray-600">{description}</p>
+           </div>
            
 
            

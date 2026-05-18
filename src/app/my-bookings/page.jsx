@@ -12,7 +12,7 @@ const MyBooking =async () => {
 const session = await auth.api.getSession({
     headers: await headers()
 })
-const user = session.user;
+const user = session?.user;
 // console.log(user); 
 
 const res = await fetch(`http://localhost:5000/booking/${user?.id}`);

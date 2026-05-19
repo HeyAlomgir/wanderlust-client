@@ -1,15 +1,26 @@
 import BokigCard from "@/component/BokigCard";
 import { DeleteDialog } from "@/component/DeleteDialog";
 import EditModal from "@/component/EditModal";
+import { auth } from "@/lib/auth";
 import { Button, Card } from "@heroui/react";
+import { headers } from "next/headers";
 import Image from "next/image";
 import { FaLocationDot } from "react-icons/fa6";
 
 
 const DesetinationsDetailPage =async ({params}) => {
     const {id}=await params ;
+    const {token} = await auth.api.getToken({
+        headers:await headers()
+    })
 
-    const res = await fetch(`http://localhost:5000/destination/${id}`);
+
+
+    const res = await fetch(`http://localhost:5000/destination/${id}`,{
+        headers:{
+            authorization : `Bearer ${token}`
+        }
+    });
     const destinations = await res.json();
 
     const {destinationName,country,category,price,duration,departureDate,imageUrl,description}=destinations;
